@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7912f4daa10c343758af11ff94d0188c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 1160726412144046, guid: a06c4886cbc4c46fca4eed4141050b62, type: 2}
 --- !u!114 &114740296580477328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,4 +170,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63cafc2cae744116a9008622da47c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
