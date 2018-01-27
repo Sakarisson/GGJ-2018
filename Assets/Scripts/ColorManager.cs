@@ -103,5 +103,9 @@ public class ColorManager : MonoBehaviour
             yield return null;
         }
     }
-
+    public void ChangeColor(float t)
+    {
+        Color col = Color.Lerp(masculine, feminine, t);
+        playerRenderer.material.SetColor("_BottomColor", col);
+    }
 }
