@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum Sex {
-    MALE,
-    FEMALE,
+	FEMALE,
+	MALE,
 };
 
 public class PlayerState : MonoBehaviour {
@@ -23,7 +23,21 @@ public class PlayerState : MonoBehaviour {
 		
 	}
 
-    public void PlayerWasHit(Sex type) {
-        
-    }
+	void OnCollisionEnter2D(Collision2D coll) {
+		if (coll.transform.gameObject.name == "Bullet(Clone)") {
+			if (coll.transform.gameObject.GetComponent<Bullet> ().sex == Sex.FEMALE) {
+				Debug.Log ("Female hit");
+			} else {
+				Debug.Log ("Male hit");
+			}
+		} else if (coll.transform.gameObject.name == "Collectable(Clone)") {
+			if (coll.transform.gameObject.GetComponent<Collectable> ().sex == Sex.FEMALE) {
+				Debug.Log ("Female collected");
+			} else {
+				Debug.Log ("Male collected");
+			}
+		}
+
+		Destroy (coll.transform.gameObject);
+	}
 }

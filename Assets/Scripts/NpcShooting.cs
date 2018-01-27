@@ -32,7 +32,7 @@ public class NpcShooting : MonoBehaviour {
 	void shoot(){
 		if (target) {
 			GameObject shotBullet = Instantiate(bullet, transform.position, Quaternion.identity) as GameObject;
-			shotBullet.GetComponent<BulletMovement>().setDirection((target.transform.position - transform.position).normalized);
+			shotBullet.GetComponent<Bullet>().init((target.transform.position - transform.position).normalized);
 			nextShootAvailable = Time.time + 1f;
 		}
 	}
