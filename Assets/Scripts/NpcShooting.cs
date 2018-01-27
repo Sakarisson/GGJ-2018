@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NpcShooting : MonoBehaviour {
 
+	public GameObject bullet;
+
 	GameObject target;
 
 	float cooldown = 2f;
@@ -28,8 +30,11 @@ public class NpcShooting : MonoBehaviour {
 	}
 
 	void shoot(){
-		Debug.Log("Shots fired!");
-		nextShootAvailable = Time.time + cooldown;
+		if (target) {
+			GameObject shotBullet = Instantiate(bullet, transform.position, Quaternion.identity) as GameObject;
+			shotBullet.GetComponent<BulletMovement>().setDirection((target.transform.position - transform.position).normalized);
+			nextShootAvailable = Time.time + 1f;
+		}
 	}
 
 	bool canAssignTarget() {
@@ -42,7 +47,6 @@ public class NpcShooting : MonoBehaviour {
 			target = randomizeTarget(targetColliders);
 			nextTargetAssign = Time.time + 5f;
 		} else {
-			Debug.Log ("no target");
 			target = null;
 			nextTargetAssign = Time.time + 1f;
 		}
@@ -50,7 +54,7 @@ public class NpcShooting : MonoBehaviour {
 
 	GameObject randomizeTarget(Collider[] targetColliders) {
 		int randomIndex = Mathf.FloorToInt(Random.Range (0f, targetColliders.Length - 0.000001f));
-		if (targetColliders[randomIndex].transform.gameObject != gameObject) {
+		if (targetColliders[randomIndex].transform.gameObject != gameObject.transform.Find("Cube").transform.gameObject) {
 			return targetColliders[randomIndex].transform.gameObject;
 		} else {
 			return randomizeTarget(targetColliders);
