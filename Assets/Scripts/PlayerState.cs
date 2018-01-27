@@ -9,7 +9,9 @@ public enum Sex {
 
 public class PlayerState : MonoBehaviour {
     Sex initialState;
+    // Symbolizes gender identity
     float tribe; // 0 - 1 where 0 is totally feminine and 1 is totally masculine
+    float armor; // 
 
 	// Use this for initialization
 	void Start () {
