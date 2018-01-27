@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NpcMovement : MonoBehaviour {
+    private Camera mainCamera;
 
 	public float speed = 5f;
 
@@ -11,7 +12,7 @@ public class NpcMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        mainCamera = Camera.main;
 	}
 	
 	// Update is called once per frame
@@ -22,8 +23,8 @@ public class NpcMovement : MonoBehaviour {
 	}
 
 	void setNewDestination() {
-		destinationX = Random.Range(-5f, 5f);
-		destinationY = Random.Range(-5f, 5f);
+		destinationX = Random.Range(-18f, 18f);
+		destinationY = Random.Range(-8f, 8f);
 	}
 
 	bool destinationReached() {
