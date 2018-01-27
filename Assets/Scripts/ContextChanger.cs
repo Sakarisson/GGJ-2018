@@ -5,6 +5,7 @@ using UnityEngine;
 public class ContextChanger : MonoBehaviour {
     // Public data members
     public float changeTime = 2f;
+    public GameObject enemy;
 
     // Private data members
     private ArrayList spawnableObjects = new ArrayList();
@@ -14,15 +15,15 @@ public class ContextChanger : MonoBehaviour {
         Initialize();
 
         // Debug
-        Change();
+        // Change();
     }
 
     private void Initialize() {
         var objects = GameObject.FindGameObjectsWithTag("spawnable");
+        SpawnEnemies(5);
         foreach (GameObject obj in objects) {
             spawnableObjects.Add(obj);
         }
-        Debug.Log(spawnableObjects[1]);
     }
 
     public Color GetRandomAllowedColor(Color currentColor)
@@ -56,6 +57,14 @@ public class ContextChanger : MonoBehaviour {
             elapsedTime += Time.deltaTime;
             objectRenderer.material.color = Color.Lerp(currentColor, color, (elapsedTime / fadeTime));
             yield return null;
+        }
+    }
+
+    public void SpawnEnemies(int enemiesToSpawn) {
+        for (int i = 0; i < enemiesToSpawn; i++) {
+            Vector3 center = transform.position;
+            Vector3 spawnLocation = new Vector3(center.x + Random.Range(-10f, 10f), center.y + Random.Range(-10f, 10f), center.z);
+            GameObject spawnedEnemy = Instantiate(enemy, spawnLocation, Quaternion.identity) as GameObject;
         }
     }
 }
