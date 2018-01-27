@@ -15,7 +15,7 @@ public class ContextChanger : MonoBehaviour {
         Initialize();
 
         // Debug
-        // Change();
+        Change();
     }
 
     private void Initialize() {
@@ -43,19 +43,24 @@ public class ContextChanger : MonoBehaviour {
     }
 
     private IEnumerator ChangeColor(Color endColor) {
-        yield return FadeToColor(Color.white);
-        yield return new WaitForSeconds(1);
-        yield return FadeToColor(endColor);
+        while (1 < 2)
+        {
+            yield return FadeToColor(Color.white);
+            yield return new WaitForSeconds(1);
+            yield return FadeToColor(endColor);
+            yield return new WaitForSeconds(1);
+        }
     }
 
     private IEnumerator FadeToColor(Color color) {
         float elapsedTime = 0f;
         float fadeTime = changeTime / 2f;
-        Renderer objectRenderer = gameObject.GetComponent<Renderer>();
-        Color currentColor = objectRenderer.material.color;
+        // Renderer objectRenderer = gameObject.GetComponent<Renderer>();
+        // Color currentColor = objectRenderer.material.color;
+        Color currentColor = Camera.main.backgroundColor;
         while (elapsedTime < fadeTime) {
             elapsedTime += Time.deltaTime;
-            objectRenderer.material.color = Color.Lerp(currentColor, color, (elapsedTime / fadeTime));
+            Camera.main.backgroundColor = Color.Lerp(currentColor, color, (elapsedTime / fadeTime));
             yield return null;
         }
     }
