@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : Movement {
+public class PlayerMovement : MonoBehaviour {
+
+	public float speed = 10f;
 
 	// Use this for initialization
 	void Start () {
@@ -11,6 +13,6 @@ public class PlayerMovement : Movement {
 	
 	// Update is called once per frame
 	void Update () {
-		move(new Vector2(Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical")));
+		gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical")) * speed;
 	}
 }

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NpcMovement : Movement {
+public class NpcMovement : MonoBehaviour {
 
-	float tarX = 0f;
-	float tarY = 0f;
+	public float speed = 5f;
+
+	float destinationX = 0f;
+	float destinationY = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -15,16 +17,16 @@ public class NpcMovement : Movement {
 	// Update is called once per frame
 	void Update () {
 		if (destinationReached())
-			setNewTarget();
-		move((new Vector2(tarX, tarY) - new Vector2(transform.position.x, transform.position.y)).normalized);
+			setNewDestination();
+		gameObject.GetComponent<Rigidbody2D>().velocity = (new Vector2(destinationX, destinationY) - new Vector2(transform.position.x, transform.position.y)).normalized * speed;
 	}
 
-	void setNewTarget() {
-		tarX = Random.Range(-5f, 5f);
-		tarY = Random.Range(-5f, 5f);
+	void setNewDestination() {
+		destinationX = Random.Range(-5f, 5f);
+		destinationY = Random.Range(-5f, 5f);
 	}
 
 	bool destinationReached() {
-		return System.Math.Abs(tarX - transform.position.x) < 0.5f && System.Math.Abs(tarY - transform.position.y) < 0.5f;
+		return System.Math.Abs(destinationX - transform.position.x) < 0.5f && System.Math.Abs(destinationY - transform.position.y) < 0.5f;
 	}
 }
