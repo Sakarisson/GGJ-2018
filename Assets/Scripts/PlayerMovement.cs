@@ -11,6 +11,6 @@ public class PlayerMovement : Movement {
 	
 	// Update is called once per frame
 	void Update () {
-		gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * speed;
+		move(new Vector2(Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical")));
 	}
 }

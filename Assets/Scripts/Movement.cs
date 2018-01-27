@@ -15,4 +15,8 @@ public class Movement : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	protected void move(Vector2 vector) {
+		gameObject.GetComponent<Rigidbody2D>().velocity = vector * speed;
+	}
 }
