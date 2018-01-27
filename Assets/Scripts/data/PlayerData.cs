@@ -24,6 +24,24 @@ public class PlayerData {
 	/// </summary>
 	public static int goalGender = 0;
 
+	/// <summary>
+	/// The current armour state. Values from 0 to 100.
+	/// 0 = masculine, 100 = feminine
+	/// </summary>
+	public static int armour = 0;
+
+	/// <summary>
+	/// The initial armour value in the beginning of the game. Values from 0 to 100.
+	/// 0 = masculine, 100 = feminine
+	/// </summary>
+	public static int startArmour = 0;
+
+	/// <summary>
+	/// The target armour value. The goal of the game. Values from 0 to 100.
+	/// 0 = masculine, 100 = feminine
+	/// </summary>
+	public static int goalArmour = 0;
+
     public Color GetColorFromGender(int input) {
         return Color.Lerp(LightBlue, Pink, (float)input / 100f);
     }
