@@ -8,6 +8,8 @@ public class ContextChanger : MonoBehaviour {
 
     // Private data members
     private ArrayList spawnableObjects = new ArrayList();
+    private Constants constants;
+    private Renderer renderer;
 
     void Start() {
         // Find all items to be changed
@@ -18,18 +20,24 @@ public class ContextChanger : MonoBehaviour {
     }
 
     private void Initialize() {
+        constants = GameObject.Find("Scripts").GetComponent<Constants>();
+        renderer = gameObject.GetComponent<Renderer>();
         var objects = GameObject.FindGameObjectsWithTag("spawnable");
-        foreach (GameObject obj in objects) {
+        foreach (GameObject obj in objects)
+        {
             spawnableObjects.Add(obj);
         }
         Debug.Log(spawnableObjects[1]);
     }
 
     public void Change() {
-        StartCoroutine(ChangeColor(Color.magenta));
+        Color currentColor = renderer.material.color;
+        // StartCoroutine(ChangeColor(Color.red));
+        StartCoroutine(ChangeColor(constants.GetRandomAllowedColor(currentColor)));
     }
 
     private IEnumerator ChangeColor(Color endColor) {
+        Debug.Log(endColor);
         yield return FadeToColor(Color.white);
         yield return new WaitForSeconds(1);
         yield return FadeToColor(endColor);
@@ -38,7 +46,6 @@ public class ContextChanger : MonoBehaviour {
     private IEnumerator FadeToColor(Color color) {
         float elapsedTime = 0f;
         float fadeTime = changeTime / 2f;
-        Renderer renderer = gameObject.GetComponent<Renderer>();
         Color currentColor = renderer.material.color;
         while (elapsedTime < fadeTime) {
             elapsedTime += Time.deltaTime;
