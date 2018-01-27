@@ -22,4 +22,8 @@ public class PlayerData {
 	/// </summary>
 	public static int goalGender = 0;
 
+    public Color GetColorFromGender(int input) {
+        return Color.Lerp(Color.blue, Color.red, (float)input / 100f);
+    }
+
 }
