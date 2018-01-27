@@ -25,6 +25,18 @@ public class ContextChanger : MonoBehaviour {
         Debug.Log(spawnableObjects[1]);
     }
 
+    public Color GetRandomAllowedColor(Color currentColor)
+    {
+        Color[] allowedColors = Constants.allowedColors;
+        while (true)
+        {
+            Color randomColor = allowedColors[Random.Range(0, allowedColors.Length)];
+            if (randomColor != currentColor) {
+                return randomColor;
+            }
+        }
+    }
+
     public void Change() {
         StartCoroutine(ChangeColor(Color.magenta));
     }
@@ -38,11 +50,11 @@ public class ContextChanger : MonoBehaviour {
     private IEnumerator FadeToColor(Color color) {
         float elapsedTime = 0f;
         float fadeTime = changeTime / 2f;
-        Renderer renderer = gameObject.GetComponent<Renderer>();
-        Color currentColor = renderer.material.color;
+        Renderer objectRenderer = gameObject.GetComponent<Renderer>();
+        Color currentColor = objectRenderer.material.color;
         while (elapsedTime < fadeTime) {
             elapsedTime += Time.deltaTime;
-            renderer.material.color = Color.Lerp(currentColor, color, (elapsedTime / fadeTime));
+            objectRenderer.material.color = Color.Lerp(currentColor, color, (elapsedTime / fadeTime));
             yield return null;
         }
     }
