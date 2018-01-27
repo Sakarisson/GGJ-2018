@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class Movement : MonoBehaviour {
-    public float speed = 10f;
+public class NpcMovement : Movement {
 
 	// Use this for initialization
-    void Start () {
-        
-    }
-
+	void Start () {
+		
+	}
+	
 	// Update is called once per frame
 	void Update () {
 		
