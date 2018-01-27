@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletMovement : MonoBehaviour {
+public class Bullet : MonoBehaviour {
 
 	public float speed = 8f;
+	public Sex sex;
+
 	Vector3 direction;
 
-	public void setDirection(Vector3 _direction) {
+	public void init(Vector3 _direction) {
 		direction = _direction;
+		sex = Random.value < 0.5f ? Sex.FEMALE : Sex.MALE;
 	}
 
 	// Use this for initialization
