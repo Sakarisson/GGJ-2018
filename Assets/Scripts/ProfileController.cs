@@ -38,14 +38,14 @@ public class ProfileController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		/*
+		
 		if (isProfileChanged ()) {
 			updateProfileData ();
 			//update graphics controller
 			updatedSliderCount++;
 			showSliders();
 		}
-		*/
+
 	}
 
 

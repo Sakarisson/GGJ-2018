@@ -18,12 +18,12 @@ public class ColorManager : MonoBehaviour
     public Coroutine fadeLeft;
     public Coroutine fadeRight;
 
-    void Start()
+    void Awake()
     {
         i = this;
         //ScaleRoot(5, 5);
-        FadeFeminine(false, 5);
-        FadeMasculine(false, 10);
+        //FadeFeminine(false, 5);
+        //FadeMasculine(false, 10);
     }
 
     public void ScaleRoot(float size, float time)
