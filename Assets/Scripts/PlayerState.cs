@@ -27,10 +27,15 @@ public class PlayerState : MonoBehaviour {
 		if (coll.transform.gameObject.name == "Bullet(Clone)") {
 			if (coll.transform.gameObject.GetComponent<Bullet> ().sex == Sex.FEMALE) {
 				PlayerData.redBullets++;
-			} else {
-				PlayerData.blueBullets++;
+			    GameObject go = Instantiate(Resources.Load<GameObject>("PINK_BOOM"),coll.transform.position, coll.transform.rotation);
+			    Destroy(go, 1f);
 			}
-		} else if (coll.transform.gameObject.name == "Collectable(Clone)") {
+            else {
+				PlayerData.blueBullets++;
+			    GameObject go = Instantiate(Resources.Load<GameObject>("BLUE_BOOM"),coll.transform.position, coll.transform.rotation);
+			    Destroy(go, 1f);
+            }
+        } else if (coll.transform.gameObject.name == "Collectable(Clone)") {
 			if (coll.transform.gameObject.GetComponent<Collectable> ().sex == Sex.FEMALE) {
 				PlayerData.redArmor++;
 			} else {
