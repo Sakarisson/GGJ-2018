@@ -28,6 +28,7 @@ public class GameUiController : MonoBehaviour {
 	private int previousSexualOrientationPoints = 0;
 	public Slider playerGenderStatusSlider;
 	public Slider playerSexualOrientationStatusSlider;
+    public GameObject playerPrefab;
 
 	private Sprite getIconSprite(int genderType){
 		Sprite s = maskulineTexture;
@@ -51,7 +52,7 @@ public class GameUiController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        Spawn();
 	}
 
 	public void initializeUi(){
@@ -84,4 +85,9 @@ public class GameUiController : MonoBehaviour {
 		}
 
 	}
+
+    public void Spawn() {
+        GameObject.Find("Scripts").GetComponent<ContextChanger>().SpawnEnemies(5, 10);
+        GameObject player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+    }
 }

@@ -14,4 +14,8 @@ public class Constants
         new Color32(224, 91, 82, 255),
         new Color32(184, 178, 176, 255)
     };
+
+    public Color GetRandomAllowedColor() {
+        return allowedColors[Random.Range(0, allowedColors.Length - 1)];
+    }
 }

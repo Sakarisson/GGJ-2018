@@ -5,14 +5,14 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
 	public float speed = 8f;
-	public Sex sex;
+	public PlayerData.Sex sex;
 
 	Vector3 direction;
 
-	public void init(Vector3 _direction, Sex _sex) {
+	public void init(Vector3 _direction, PlayerData.Sex _sex) {
 		direction = _direction;
 		sex = _sex;
-		gameObject.GetComponent<Renderer> ().material.color = sex == Sex.FEMALE ? PlayerData.Pink : PlayerData.LightBlue;
+		gameObject.GetComponent<Renderer> ().material.color = sex == PlayerData.Sex.FEMALE ? PlayerData.Pink : PlayerData.LightBlue;
 	}
 
 	// Use this for initialization

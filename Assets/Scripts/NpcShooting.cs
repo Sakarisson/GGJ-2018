@@ -32,8 +32,9 @@ public class NpcShooting : MonoBehaviour {
 	void shoot(){
 		if (target) {
 			GameObject shotBullet = Instantiate(bullet, transform.position, Quaternion.identity) as GameObject;
-			shotBullet.GetComponent<Bullet>().init((target.transform.position - transform.position).normalized, Random.value < 0.5f ? Sex.FEMALE : Sex.MALE);
-			nextShootAvailable = Time.time + cooldown;
+            // shotBullet.GetComponent<Bullet>().init((target.transform.position - transform.position).normalized, Random.value < 0.5f ? PlayerData.Sex.FEMALE : PlayerData.Sex.MALE);
+            shotBullet.GetComponent<Bullet>().init((target.transform.position - transform.position).normalized, GetComponent<NpcMovement>().sex);
+            nextShootAvailable = Time.time + cooldown;
 		}
 	}
 
