@@ -5,7 +5,8 @@ using UnityEngine;
 public class NpcMovement : MonoBehaviour {
     private Camera mainCamera;
     public PlayerData.Sex sex;
-
+    public Material fem;
+    public Material mal;
 	public float speed = 5f;
     public Sprite[] genderSymbols;
 
@@ -24,14 +25,13 @@ public class NpcMovement : MonoBehaviour {
 	}
 
     private void SetGenderDetails() {
+        // Set symbol
+        Material mat = sex == PlayerData.Sex.MALE ? mal : fem;
+        gameObject.GetComponentsInChildren<Renderer>()[1].material = mat;
         // Set color
         Color color;
         color = sex == PlayerData.Sex.MALE ? PlayerData.LightBlue : PlayerData.Pink;
         gameObject.GetComponentsInChildren<Renderer>()[1].material.color = color; // DEAD BIRD DO NOT EAT
-
-        // Set symbol
-        Sprite sprite = sex == PlayerData.Sex.MALE ? genderSymbols[0] : genderSymbols[1];
-        gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
     }
 	
 	// Update is called once per frame

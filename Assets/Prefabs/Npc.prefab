@@ -171,6 +171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63cafc2cae744116a9008622da47c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sex: 0
+  fem: {fileID: 2100000, guid: 9935ec705081f4e1ca866d44853b670c, type: 2}
+  mal: {fileID: 2100000, guid: 3558d64fe20c14279a1c9f17c067cd8e, type: 2}
   speed: 5
   genderSymbols:
   - {fileID: 21300000, guid: 10f500ec02df1a3489e50afed87e1917, type: 3}
