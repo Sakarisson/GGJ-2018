@@ -9,9 +9,10 @@ public class Bullet : MonoBehaviour {
 
 	Vector3 direction;
 
-	public void init(Vector3 _direction) {
+	public void init(Vector3 _direction, Sex _sex) {
 		direction = _direction;
-		sex = Random.value < 0.5f ? Sex.FEMALE : Sex.MALE;
+		sex = _sex;
+		gameObject.GetComponent<Renderer> ().material.color = sex == Sex.FEMALE ? PlayerData.Pink : PlayerData.LightBlue;
 	}
 
 	// Use this for initialization
