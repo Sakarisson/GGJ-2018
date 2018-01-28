@@ -46,4 +46,8 @@ public class PlayerData {
         return Color.Lerp(LightBlue, Pink, (float)input / 100f);
     }
 
+	public static int blueBullets = 0;
+	public static int redBullets = 0;
+	public static int blueArmor = 0;
+	public static int redArmor = 0;
 }
