@@ -53,3 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTime: 2
   enemy: {fileID: 1345255124011596, guid: 4c922baa485f84a718794506733bde70, type: 2}
+  armor: {fileID: 1043128427097694, guid: 207f6e20dc08b4a6198f328cf6342042, type: 2}
+  armorCooldown: 5
+  spawnNextArmorAt: 0
