@@ -16,6 +16,7 @@ public class MainUiController : MonoBehaviour {
 		Debug.Log ("ColorManager.i:"+(ColorManager.i==null));
 		ColorManager.i.FadeFeminine(false, 0.01f);
 		ColorManager.i.FadeMasculine(false, 0.01f);
+		//ColorManager.i.FadeMasculine(true, 0.01f);
 		ColorManager.i.ScaleRoot (5f,0.01f);
 	}
 	
