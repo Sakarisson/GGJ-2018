@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerData {
+    public enum Sex {
+        FEMALE,
+        MALE,
+    };
+
+    public Sex playerSex;
     public static Color32 Pink = new Color32(255, 88, 188, 255);
     public static Color32 LightBlue = new Color32(79, 203, 225, 255);
 
