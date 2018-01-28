@@ -6,6 +6,10 @@ public class ContextChanger : MonoBehaviour {
     // Public data members
     public float changeTime = 20f;
     public GameObject enemy;
+	public GameObject armor;
+
+	public float armorCooldown = 5f;
+	public float spawnNextArmorAt = 0f;
 
     // Private data members
     private ArrayList spawnableObjects = new ArrayList();
@@ -14,6 +18,11 @@ public class ContextChanger : MonoBehaviour {
         // Find all items to be changed
         Initialize();
     }
+
+	void Update() {
+		if (shouldSpawnArmor())
+			spawnArmor();
+	}
 
     private void Initialize() {
         var objects = GameObject.FindGameObjectsWithTag("spawnable");
@@ -80,4 +89,15 @@ public class ContextChanger : MonoBehaviour {
             StartCoroutine(SpawnEnemyWithinSeconds(spawnTime));
         }
     }
+
+	bool shouldSpawnArmor() {
+		return Time.time >= spawnNextArmorAt;
+	}
+
+	void spawnArmor() {
+		Vector3 center = transform.position;
+		Vector3 spawnLocation = new Vector3(center.x + Random.Range(-10f, 10f), center.y + Random.Range(-10f, 10f), center.z);
+		Instantiate(armor, spawnLocation, Quaternion.identity);
+		spawnNextArmorAt = Time.time + 5f;
+	}
 }
