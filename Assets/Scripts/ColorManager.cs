@@ -26,7 +26,8 @@ public class ColorManager : MonoBehaviour
     {
         i = this;
         //ScaleRoot(5, 5);
-        //FadeFeminine(false, 5);
+        //FadeFeminine(false, 0.1f);
+        //FadeFeminine(true, 0.1f);
         //FadeMasculine(false, 10);
     }
 
@@ -50,7 +51,6 @@ public class ColorManager : MonoBehaviour
             yield return null;
         }
     }
-
 
     public void FadeMasculine(bool visible, float time)
     {
@@ -110,5 +110,9 @@ public class ColorManager : MonoBehaviour
             yield return null;
         }
     }
-
+    public void ChangeColor(float t)
+    {
+        Color col = Color.Lerp(masculine, feminine, t/2);
+        playerRenderer.material.SetColor("_BottomColor", col);
+    }
 }

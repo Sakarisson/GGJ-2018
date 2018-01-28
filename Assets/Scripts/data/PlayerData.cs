@@ -12,6 +12,11 @@ public class PlayerData {
     public static Color32 Pink = new Color32(255, 88, 188, 255);
     public static Color32 LightBlue = new Color32(79, 203, 225, 255);
 
+	public static Color32 genderStartColor = new Color32(255, 88, 188, 255);
+	public static Color32 genderEndColor = new Color32(255, 88, 188, 255);
+	public static Color32 collectableStartColor = new Color32(255, 88, 188, 255);
+	public static Color32 collectableEndColor = new Color32(255, 88, 188, 255);
+
 	/// <summary>
 	/// The current gender state. Values from 0 to 100.
 	/// 0 = masculine, 100 = feminine
