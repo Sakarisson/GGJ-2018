@@ -13,9 +13,6 @@ public class ContextChanger : MonoBehaviour {
     void Start() {
         // Find all items to be changed
         Initialize();
-
-        // Debug
-        Change();
     }
 
     private void Initialize() {
@@ -43,16 +40,12 @@ public class ContextChanger : MonoBehaviour {
     }
 
     private IEnumerator ChangeColor(Color endColor) {
-        while (1 < 2)
-        {
-            yield return FadeToColor(Color.white);
-            yield return new WaitForSeconds(1);
-            yield return FadeToColor(endColor);
-            yield return new WaitForSeconds(1);
-        }
+        yield return FadeToColor(Color.white);
+        yield return new WaitForSeconds(1);
+        yield return FadeToColor(endColor);
     }
 
-    private IEnumerator FadeToColor(Color color) {
+    public IEnumerator FadeToColor(Color color) {
         float elapsedTime = 0f;
         float fadeTime = changeTime / 2f;
         // Renderer objectRenderer = gameObject.GetComponent<Renderer>();
