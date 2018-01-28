@@ -52,7 +52,6 @@ public class ColorManager : MonoBehaviour
         }
     }
 
-
     public void FadeMasculine(bool visible, float time)
     {
 		lastMasculineVisible = visible;
@@ -113,7 +112,7 @@ public class ColorManager : MonoBehaviour
     }
     public void ChangeColor(float t)
     {
-        Color col = Color.Lerp(masculine, feminine, t);
+        Color col = Color.Lerp(masculine, feminine, t/2);
         playerRenderer.material.SetColor("_BottomColor", col);
     }
 }
