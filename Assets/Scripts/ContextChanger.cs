@@ -17,7 +17,6 @@ public class ContextChanger : MonoBehaviour {
 
     private void Initialize() {
         var objects = GameObject.FindGameObjectsWithTag("spawnable");
-        SpawnEnemies(5);
         foreach (GameObject obj in objects) {
             spawnableObjects.Add(obj);
         }
@@ -58,11 +57,20 @@ public class ContextChanger : MonoBehaviour {
         }
     }
 
-    public void SpawnEnemies(int enemiesToSpawn) {
+    private IEnumerator SpawnEnemyWithinSeconds(float seconds) {
+        float spawnTime = Random.Range(0f, seconds);
+        yield return new WaitForSeconds(spawnTime);
+        Vector3 center = transform.position;
+        Vector3 spawnLocation = new Vector3(center.x + Random.Range(-10f, 10f), center.y + Random.Range(-10f, 10f), center.z);
+        GameObject spawnedEnemy = Instantiate(enemy, spawnLocation, Quaternion.identity) as GameObject;
+    }
+
+    public void SpawnEnemies(int enemiesToSpawn, float spawnTime) {
         for (int i = 0; i < enemiesToSpawn; i++) {
-            Vector3 center = transform.position;
-            Vector3 spawnLocation = new Vector3(center.x + Random.Range(-10f, 10f), center.y + Random.Range(-10f, 10f), center.z);
-            GameObject spawnedEnemy = Instantiate(enemy, spawnLocation, Quaternion.identity) as GameObject;
+            // Vector3 center = transform.position;
+            // Vector3 spawnLocation = new Vector3(center.x + Random.Range(-10f, 10f), center.y + Random.Range(-10f, 10f), center.z);
+            // GameObject spawnedEnemy = Instantiate(enemy, spawnLocation, Quaternion.identity) as GameObject;
+            StartCoroutine(SpawnEnemyWithinSeconds(spawnTime));
         }
     }
 }
