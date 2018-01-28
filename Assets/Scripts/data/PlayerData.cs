@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerData {
-    private static Color32 Pink = new Color32(255, 88, 188, 255);
-    private static Color32 LightBlue = new Color32(79, 203, 225, 255);
+    public static Color32 Pink = new Color32(255, 88, 188, 255);
+    public static Color32 LightBlue = new Color32(79, 203, 225, 255);
 
 	/// <summary>
 	/// The current gender state. Values from 0 to 100.
