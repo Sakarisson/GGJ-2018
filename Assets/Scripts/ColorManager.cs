@@ -26,7 +26,8 @@ public class ColorManager : MonoBehaviour
     {
         i = this;
         //ScaleRoot(5, 5);
-        //FadeFeminine(false, 5);
+        //FadeFeminine(false, 0.1f);
+        //FadeFeminine(true, 0.1f);
         //FadeMasculine(false, 10);
     }
 
