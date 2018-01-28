@@ -5,6 +5,7 @@ using UnityEngine;
 public class ContextChanger : MonoBehaviour {
     // Public data members
     public float changeTime = 2f;
+    public GameObject enemy;
 
     // Private data members
     private ArrayList spawnableObjects = new ArrayList();
@@ -12,9 +13,6 @@ public class ContextChanger : MonoBehaviour {
     void Start() {
         // Find all items to be changed
         Initialize();
-
-        // Debug
-        Change();
     }
 
     private void Initialize() {
@@ -22,7 +20,6 @@ public class ContextChanger : MonoBehaviour {
         foreach (GameObject obj in objects) {
             spawnableObjects.Add(obj);
         }
-        Debug.Log(spawnableObjects[1]);
     }
 
     public Color GetRandomAllowedColor(Color currentColor)
@@ -47,15 +44,33 @@ public class ContextChanger : MonoBehaviour {
         yield return FadeToColor(endColor);
     }
 
-    private IEnumerator FadeToColor(Color color) {
+    public IEnumerator FadeToColor(Color color) {
         float elapsedTime = 0f;
         float fadeTime = changeTime / 2f;
-        Renderer objectRenderer = gameObject.GetComponent<Renderer>();
-        Color currentColor = objectRenderer.material.color;
+        // Renderer objectRenderer = gameObject.GetComponent<Renderer>();
+        // Color currentColor = objectRenderer.material.color;
+        Color currentColor = Camera.main.backgroundColor;
         while (elapsedTime < fadeTime) {
             elapsedTime += Time.deltaTime;
-            objectRenderer.material.color = Color.Lerp(currentColor, color, (elapsedTime / fadeTime));
+            Camera.main.backgroundColor = Color.Lerp(currentColor, color, (elapsedTime / fadeTime));
             yield return null;
+        }
+    }
+
+    private IEnumerator SpawnEnemyWithinSeconds(float seconds) {
+        float spawnTime = Random.Range(0f, seconds);
+        yield return new WaitForSeconds(spawnTime);
+        Vector3 center = transform.position;
+        Vector3 spawnLocation = new Vector3(center.x + Random.Range(-10f, 10f), center.y + Random.Range(-10f, 10f), center.z);
+        GameObject spawnedEnemy = Instantiate(enemy, spawnLocation, Quaternion.identity) as GameObject;
+    }
+
+    public void SpawnEnemies(int enemiesToSpawn, float spawnTime) {
+        for (int i = 0; i < enemiesToSpawn; i++) {
+            // Vector3 center = transform.position;
+            // Vector3 spawnLocation = new Vector3(center.x + Random.Range(-10f, 10f), center.y + Random.Range(-10f, 10f), center.z);
+            // GameObject spawnedEnemy = Instantiate(enemy, spawnLocation, Quaternion.identity) as GameObject;
+            StartCoroutine(SpawnEnemyWithinSeconds(spawnTime));
         }
     }
 }
