@@ -27,8 +27,7 @@ public class NpcMovement : MonoBehaviour {
         // Set color
         Color color;
         color = sex == PlayerData.Sex.MALE ? PlayerData.LightBlue : PlayerData.Pink;
-        Debug.Log(gameObject.GetComponentsInChildren<Renderer>().Length);
-        gameObject.GetComponentsInChildren<Renderer>()[1].material.color = color;
+        gameObject.GetComponentsInChildren<Renderer>()[1].material.color = color; // DEAD BIRD DO NOT EAT
 
         // Set symbol
         Sprite sprite = sex == PlayerData.Sex.MALE ? genderSymbols[0] : genderSymbols[1];

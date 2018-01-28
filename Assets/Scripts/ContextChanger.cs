@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ContextChanger : MonoBehaviour {
     // Public data members
-    public float changeTime = 2f;
+    public float changeTime = 20f;
     public GameObject enemy;
 
     // Private data members
@@ -19,6 +19,13 @@ public class ContextChanger : MonoBehaviour {
         var objects = GameObject.FindGameObjectsWithTag("spawnable");
         foreach (GameObject obj in objects) {
             spawnableObjects.Add(obj);
+        }
+        StartCoroutine(IterateColors());
+    }
+    private IEnumerator IterateColors() {
+        yield return new WaitForSeconds(60); // Wait a minute before starting changing colors
+        while (true) {
+            yield return FadeToColor(Constants.allowedColors[Random.Range(0, Constants.allowedColors.Length - 1)]);
         }
     }
 
