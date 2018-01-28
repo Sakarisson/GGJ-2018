@@ -5,7 +5,7 @@ using UnityEngine;
 public class MainUiController : MonoBehaviour {
 
 	public GameObject profileCanvas;
-	public GameObject gameCanvas;
+	public GameUiController gameUiControllerCanvas;
 	public GameObject menuButton;
 
 	// Use this for initialization
@@ -26,7 +26,8 @@ public class MainUiController : MonoBehaviour {
 	}
 
 	public void showGameCanvas(){
-		gameCanvas.SetActive (true);
+		gameUiControllerCanvas.gameObject.SetActive (true);
+		gameUiControllerCanvas.initializeUi ();
 		hideProfileCanvas ();
 		//ColorManager.i.FadeFeminine();
 		//ColorManager.i.ScaleRoot
@@ -39,7 +40,7 @@ public class MainUiController : MonoBehaviour {
 	}
 
 	public void hideGameCanvas(){
-		gameCanvas.SetActive (false);
+		gameUiControllerCanvas.gameObject.SetActive (false);
 	}
 
 	public void hideProfileCanvas(){

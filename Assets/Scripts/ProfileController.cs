@@ -15,8 +15,10 @@ public class ProfileController : MonoBehaviour {
 	public TextMeshProUGUI playerGenderTitleTextMeshProText;
 	public TextMeshProUGUI playerGenderDescriptionTextMeshProText;
 
-	public Image feminineTexture;
-	public Image maskulineTexture;
+	public Texture feminineTexture;
+	public Texture maskulineTexture;
+	public Texture transTexture;
+
 	public Image genderStartTexture;
 	public Image genderGoalTexture;
 	public Image orientationStartTexture;
@@ -33,8 +35,7 @@ public class ProfileController : MonoBehaviour {
 	int updatedSliderCount = 0;
 
 	public void initialize(){
-		if (PlayerData.goalGender == 0)
-			genderGoalTexture = feminineTexture;
+		
 	}
 
 	// Use this for initialization
