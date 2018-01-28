@@ -13,6 +13,10 @@ public class ColorManager : MonoBehaviour
     public GameObject rootFace;
     public float fadeInTime = 60;
 
+	public float lastScaleValue = -1f;
+	public bool lastFeminineVisible = false;
+	public bool lastMasculineVisible = false;
+
     public Coroutine scaleRoot;
     public Coroutine faceCenter;
     public Coroutine fadeLeft;
@@ -29,6 +33,7 @@ public class ColorManager : MonoBehaviour
     public void ScaleRoot(float size, float time)
     {
         if (scaleRoot != null) StopCoroutine(scaleRoot);
+		lastScaleValue = size;
         scaleRoot = StartCoroutine(_ScaleRoot(size, time));
     }
 
@@ -49,6 +54,7 @@ public class ColorManager : MonoBehaviour
 
     public void FadeMasculine(bool visible, float time)
     {
+		lastMasculineVisible = visible;
         if (fadeLeft != null) StopCoroutine(fadeLeft);
         if (visible)
             fadeLeft = StartCoroutine(_FadeIn(time, MasculineRenderer));
@@ -65,6 +71,7 @@ public class ColorManager : MonoBehaviour
     }
     public void FadeFeminine(bool visible, float time)
     {
+		lastFeminineVisible = visible;
         if (fadeRight != null) StopCoroutine(fadeRight);
         if (visible)
             fadeRight = StartCoroutine(_FadeIn(time, FeminineRenderer));

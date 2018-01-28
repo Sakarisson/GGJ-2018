@@ -14,9 +14,9 @@ public class MainUiController : MonoBehaviour {
 		showProfileCanvas ();
 		//Debug.Log ("ColorManager:"+(ColorManager==null));
 		Debug.Log ("ColorManager.i:"+(ColorManager.i==null));
-		ColorManager.i.FadeFeminine(false, 0.1f);
-		ColorManager.i.FadeMasculine(false, 0.1f);
-		ColorManager.i.ScaleRoot (5f,0.1f);
+		ColorManager.i.FadeFeminine(false, 0.01f);
+		ColorManager.i.FadeMasculine(false, 0.01f);
+		ColorManager.i.ScaleRoot (5f,0.01f);
 	}
 	
 	// Update is called once per frame
@@ -34,6 +34,7 @@ public class MainUiController : MonoBehaviour {
 
 	public void showProfileCanvas(){
 		profileCanvas.SetActive (true);
+		hideGameCanvas ();
 	}
 
 	public void hideGameCanvas(){
