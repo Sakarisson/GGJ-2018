@@ -15,6 +15,13 @@ public class ProfileController : MonoBehaviour {
 	public TextMeshProUGUI playerGenderTitleTextMeshProText;
 	public TextMeshProUGUI playerGenderDescriptionTextMeshProText;
 
+	public Image feminineTexture;
+	public Image maskulineTexture;
+	public Image genderStartTexture;
+	public Image genderGoalTexture;
+	public Image orientationStartTexture;
+	public Image orientationGoalTexture;
+
 	/// <summary>
 	/// The current gender state. Values from 0 to 100.
 	/// 0 = masculine, 100 = feminine
@@ -26,13 +33,15 @@ public class ProfileController : MonoBehaviour {
 	int updatedSliderCount = 0;
 
 	public void initialize(){
-		updatedSliderCount = 0;
+		if (PlayerData.goalGender == 0)
+			genderGoalTexture = feminineTexture;
 	}
 
 	// Use this for initialization
 	void Start () {
 		updateProfileData ();
 		showSliders ();
+
 		//initialStartGender = playerGenderSlider.value; 
 		//playerGenderTitleTextMeshProText.text = "AAA"; 
 		//playerGenderDescriptionTextMeshProText.text = "BBBBB";	
