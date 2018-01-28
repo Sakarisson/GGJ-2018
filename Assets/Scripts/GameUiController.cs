@@ -10,11 +10,12 @@ public class GameUiController : MonoBehaviour {
 	private int previousSexualOrientationPoints = 0;
 	public Slider playerGenderStatusSlider;
 	public Slider playerSexualOrientationStatusSlider;
+    public GameObject playerPrefab;
 
 
 	// Use this for initialization
 	void Start () {
-		
+        Spawn();
 	}
 	
 	// Update is called once per frame
@@ -27,4 +28,9 @@ public class GameUiController : MonoBehaviour {
 		playerGenderStatusSlider.value = genderPoints;
 		playerSexualOrientationStatusSlider.value = orientationPoints;
 	}
+
+    public void Spawn() {
+        GameObject.Find("Scripts").GetComponent<ContextChanger>().SpawnEnemies(5, 10);
+        GameObject player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+    }
 }
