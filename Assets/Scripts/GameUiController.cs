@@ -52,7 +52,7 @@ public class GameUiController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Spawn();
+        
 	}
 
 	public void initializeUi(){
@@ -60,34 +60,38 @@ public class GameUiController : MonoBehaviour {
 		genderGoalTexture.sprite = getIconSprite(PlayerData.goalGender);
 		orientationStartTexture.sprite = getArmorIconSprite(PlayerData.startArmour);
 		orientationGoalTexture.sprite = getArmorIconSprite(PlayerData.goalArmour);
+		Spawn();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		int genderPoints = 0;
-		int orientationPoints = 0;		
-		genderPoints = (int)playerGenderStatusSlider.value;
-		orientationPoints = (int)playerSexualOrientationStatusSlider.value;
+		if (playerGenderStatusSlider != null) {
+			int genderPoints = 0;
+			int orientationPoints = 0;		
+			genderPoints = (int)playerGenderStatusSlider.value;
+			orientationPoints = (int)playerSexualOrientationStatusSlider.value;
 
-		playerGenderStatusSlider.value = genderPoints;
-		playerSexualOrientationStatusSlider.value = orientationPoints;
+			playerGenderStatusSlider.value = genderPoints;
+			playerSexualOrientationStatusSlider.value = orientationPoints;
 
-		//SCORE TEXTS
-		if (PlayerData.startGender == 0) {
-			scoreGoalTextMeshProText.text = "Transition status from start (" + PlayerData.redBullets + ") to goal (" + PlayerData.blueBullets + ")";
-		} else {
-			scoreGoalTextMeshProText.text = "Transition status from start (" + PlayerData.blueBullets + ") to goal (" + PlayerData.redBullets + ")";
-		}
-		if (PlayerData.startGender == 0) {
-			scoreArmorTextMeshProText.text = "Armor status from start (" + PlayerData.redArmor + ") to goal (" + PlayerData.blueArmor + ")";
-		} else {
-			scoreArmorTextMeshProText.text = "Armor status from start (" + PlayerData.blueArmor + ") to goal (" + PlayerData.redArmor + ")";
+			//SCORE TEXTS
+			if (PlayerData.startGender == 0) {
+				scoreGoalTextMeshProText.text = "Transition status from start (" + PlayerData.redBullets + ") to goal (" + PlayerData.blueBullets + ")";
+			} else {
+				scoreGoalTextMeshProText.text = "Transition status from start (" + PlayerData.blueBullets + ") to goal (" + PlayerData.redBullets + ")";
+			}
+			if (PlayerData.startGender == 0) {
+				scoreArmorTextMeshProText.text = "Armor status from start (" + PlayerData.redArmor + ") to goal (" + PlayerData.blueArmor + ")";
+			} else {
+				scoreArmorTextMeshProText.text = "Armor status from start (" + PlayerData.blueArmor + ") to goal (" + PlayerData.redArmor + ")";
+			}
 		}
 
 	}
 
     public void Spawn() {
-        GameObject.Find("Scripts").GetComponent<ContextChanger>().SpawnEnemies(5, 10);
+		GameObject.Find ("Scripts").GetComponent<ContextChanger> ().enabled = true;
+		GameObject.Find("Scripts").GetComponent<ContextChanger>().SpawnEnemies(5, 10);
         GameObject player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity) as GameObject;
     }
 }

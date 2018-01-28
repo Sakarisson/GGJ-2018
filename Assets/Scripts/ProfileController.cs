@@ -55,17 +55,21 @@ public class ProfileController : MonoBehaviour {
 			
 			//update graphics controller
 			//updatedSliderCount++;
-			showSliders();
+		if (playerGenderSlider != null) {
+			showSliders ();
 			updateProfileData ();
+		}
 		//}
 
 	}
 
 
 	void updateProfileData(){
-		PlayerData.gender = (int)playerGenderSlider.value;
-		PlayerData.goalGender = (int)goalGenderSlider.value;
-		PlayerData.goalArmour = (int)goalCollectableSlider.value;
+		//if (playerGenderSlider != null) {
+			PlayerData.gender = (int)playerGenderSlider.value;
+			PlayerData.goalGender = (int)goalGenderSlider.value;
+			PlayerData.goalArmour = (int)goalCollectableSlider.value;
+		//}
 		//ColorManager.FadeFeminine();
 		//ColorManager.ScaleRoot
 		//ColorManager.FadeMasculine();
@@ -93,8 +97,8 @@ public class ProfileController : MonoBehaviour {
 
 			if (ColorManager.i.lastScaleValue != bgScaleGenderDefined) {
 				ColorManager.i.ScaleRoot (bgScaleGenderDefined, 0.6f);
-				ColorManager.i.FadeFeminine (false, 0.01f);
-				ColorManager.i.FadeMasculine (false, 0.01f);
+				//ColorManager.i.FadeFeminine (false, 0.01f);
+				//ColorManager.i.FadeMasculine (false, 0.01f);
 			}
 
 			goalGenderSlider.gameObject.SetActive(true);
@@ -116,7 +120,7 @@ public class ProfileController : MonoBehaviour {
 					ColorManager.i.ScaleRoot (bgScaleGoalGenderDefined, 0.6f);
 
 				if (previousGoalCollectableSliderValue != (int)goalCollectableSlider.value) {
-
+					/*
 					if ((int)goalCollectableSlider.value == 0) {
 						ColorManager.i.FadeFeminine (true, 0.3f);
 						ColorManager.i.FadeMasculine (false, 0.3f);
@@ -124,6 +128,7 @@ public class ProfileController : MonoBehaviour {
 						ColorManager.i.FadeFeminine (false, 0.3f);
 						ColorManager.i.FadeMasculine (true, 0.3f);
 					}
+					*/
 				}
 
 				wasGoalGenderShownPreviously = true;
