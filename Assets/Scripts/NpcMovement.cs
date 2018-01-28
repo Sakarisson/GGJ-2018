@@ -41,7 +41,11 @@ public class NpcMovement : MonoBehaviour {
 		gameObject.GetComponent<Rigidbody2D>().velocity = (new Vector2(destinationX, destinationY) - new Vector2(transform.position.x, transform.position.y)).normalized * speed;
 	}
 
-	void setNewDestination() {
+    private void FixedUpdate() {
+        transform.Rotate(new Vector3(1, 1, 1));
+    }
+
+    void setNewDestination() {
 		destinationX = Random.Range(-18f, 18f);
 		destinationY = Random.Range(-8f, 8f);
 	}
